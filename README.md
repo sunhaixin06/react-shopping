@@ -28,4 +28,4 @@ React全家桶，移动Web开发技术全解析，理解 Hybrid 混合模式开�
 
 #### 参与贡献
 
-    - [sunhaixin](https://gitee.com/github-29425276/easyproject1)
+- [sunhaixin](https://gitee.com/github-29425276/react-shopping)
