@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { NavLink, withRouter } from 'react-router-dom';
 import './BottomBar.scss';
 import { changeTab } from '../actions/tabAction';
 /* @constructor  BottomBar  @description 首页底部tab栏 */

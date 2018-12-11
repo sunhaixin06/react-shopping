@@ -1,5 +1,5 @@
 import { CHANGE_TAB } from '../actions/actionTypes';
-import { TABKEY } from '../config.js';
+import { TABKEY } from '../config';
 const initState = {
     tabs: [
         {
@@ -17,15 +17,6 @@ const initState = {
     ],
     activeKey: TABKEY.my
 };
-
-const addTodo = (state, action) =>{
-    let objnum = action.obj.num;
-    let num = state.num;
-
-    return {
-        num: num + objnum
-    }
-}
 
 const changeTab = (state, action)=>{
     let activeKey = action.obj.activeKey;

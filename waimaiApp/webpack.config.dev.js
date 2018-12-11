@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const mainFile = 'index.js';
+const webpack = require('webpack');
 const srcRoot = path.resolve(__dirname,'src');
 const devPath = path.resolve(__dirname, 'dev');
 const pageDir = path.resolve(srcRoot, 'page');
@@ -45,7 +46,8 @@ const htmlArray = getHtmlArray(entryMap);
 module.exports = {
     mode: 'development',
     devServer: {
-        contentBase: devPath
+        contentBase: devPath,
+        hot: true
     },
     entry: entryMap,
     resolve: {
@@ -59,7 +61,7 @@ module.exports = {
         rules: [
             {
                 test: /\.(js|jsx)$/,
-                use: [{loader: 'babel-loader'}],
+                use: [{loader: 'babel-loader'},{loader: 'eslint-loader'}],
                 include: srcRoot
             },
             { 
@@ -69,7 +71,12 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                use: ['style-loader','css-loader', 'sass-loader'],
+                use: ['style-loader','css-loader', 'sass-loader', {
+                    loader: 'sass-resources-loader',
+                    options: {
+                        resources: srcRoot + '/component/rem_function.scss'
+                    }
+                }],
                 include: srcRoot
             },
             {   test: /\.(png|jpg|jpeg)$/, 
@@ -79,6 +86,7 @@ module.exports = {
         ]
     },
     plugins: [
-        
+        new webpack.NamedModulesPlugin(),
+        new webpack.HotModuleReplacementPlugin()
     ].concat(htmlArray)
 };

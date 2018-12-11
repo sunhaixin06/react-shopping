@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import BottomBar from '../BottomBar/BottomBar.jsx';
+import Home from '../Home/Home';
+import BottomBar from '../BottomBar/BottomBar';
+// import { Route } from 'react-router-dom';
 
 class Main extends Component{
     constructor(props){
@@ -11,6 +12,7 @@ class Main extends Component{
     render(){
         return (
             <div>
+                <Home/>
                 <BottomBar />
             </div>
         )
