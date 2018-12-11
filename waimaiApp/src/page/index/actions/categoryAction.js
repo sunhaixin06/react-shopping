@@ -5,10 +5,10 @@ export const getHeaderData = ()=> (dispatch) =>{
      axios({
         method: 'get',
         url: '/json/head.json',
-    }).then((resp) =>{
+    }).then((e) =>{
          dispatch({
             type: HEAD_DATA,
-            obj: resp.data
+            obj: e.data
         });
     });
 }

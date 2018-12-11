@@ -10,11 +10,11 @@ export const getOrderData = (page)=> (dispatch) =>{
     axios({
         method: 'get',
         url: '/json/orders.json',
-    }).then((resp)=>{
+    }).then((e)=>{
         dispatch({
             type: ORDER_DATA,
             currentPage: page, 
-            obj: resp.data
+            obj: e.data
         });
         dispatch({
             type: CHANGEREADYSTATE,

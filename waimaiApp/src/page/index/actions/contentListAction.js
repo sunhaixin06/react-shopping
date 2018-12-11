@@ -10,12 +10,12 @@ export const getListData = (page)=> (dispatch) =>{
     axios({
         method: 'get',
         url: '/json/homelist.json'
-    }).then((resp)=>{
+    }).then((e)=>{
         window.setTimeout(()=>{
             dispatch({
                 type: LIST_DATA,
                 currentPage: page, 
-                obj: resp.data
+                obj: e.data
             });
 
             dispatch({
