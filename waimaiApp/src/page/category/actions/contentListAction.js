@@ -1,7 +1,7 @@
 import { GET_LIST_DATA } from './actionTypes';
 import axios from 'axios';
 
-export const getListData = (obj)=> (dispatch, getState) =>{
+export const getListData = (obj)=> async (dispatch, getState) =>{
     dispatch({
         type: 'SETLOADSTATE',
         obj: false
@@ -10,20 +10,18 @@ export const getListData = (obj)=> (dispatch, getState) =>{
     if (obj.filterData || getState().contentListReducer.filterData) {
         url = '/json/listparams.json';
     }
-    axios({
+    let e = await axios({
         method: 'get',
         url: url
-    }).then((e) =>{
-        dispatch({
-            type: GET_LIST_DATA,
-            filterData: obj.filterData,
-            toFirstPage: obj.toFirstPage,
-            obj: e.data
-        })
-        dispatch({
-            type: 'SETLOADSTATE',
-            obj: true
-        });
+    })
+    dispatch({
+        type: GET_LIST_DATA,
+        filterData: obj.filterData,
+        toFirstPage: obj.toFirstPage,
+        obj: e.data
+    })
+    dispatch({
+        type: 'SETLOADSTATE',
+        obj: true
     });
-
 }

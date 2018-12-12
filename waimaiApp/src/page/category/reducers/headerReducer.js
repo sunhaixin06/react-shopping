@@ -1,7 +1,5 @@
- 
-import { CHANGE_TAB,GET_FILTER_DATA,CHANGE_FILTER } from '../actions/actionTypes';
+ import { CHANGE_TAB,GET_FILTER_DATA,CHANGE_FILTER } from '../actions/actionTypes';
 import { TABKEY } from '../config';
-
 
 let tabs = {};
 
@@ -31,10 +29,17 @@ const initState = {
 
 
 const changeTab = (state, action) => {
-    return { ...state, activeKey: action.obj.activeKey, closePanel:action.obj.closePanel };
+    return {
+         ...state, 
+         activeKey: action.obj.activeKey, 
+         closePanel:action.obj.closePanel 
+    };
 }
 const getFilterData = (state, action) => {
-    return { ...state, filterData: action.obj.data };
+    return {
+         ...state, 
+         filterData: action.obj.data 
+    };
 }
 const changeFilter = (state, action) => {
     let _tabs = JSON.parse(JSON.stringify(state.tabs));

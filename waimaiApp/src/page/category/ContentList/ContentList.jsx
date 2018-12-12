@@ -1,32 +1,24 @@
-import './ContentList.scss';
-
-
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import ListItem from 'component/ListItem/ListItem.jsx';
-
 import ScrollView from 'component/ScrollView/ScrollView.jsx';
-
 import { getListData } from '../actions/contentListAction';
-
+import './ContentList.scss';
 
 /**
  * @constructor <ContentList />
  * @description 附近商家列表
  */
 
-class ContentList extends React.Component {
+class ContentList extends Component {
     constructor(props) {
         super(props);
-
         // 请求第一屏数据
         this.fetchData();
 
     }
 
     onLoadPage(){
-
         // 最多滚动3页3次
         if (this.props.page <= 3) {
             this.fetchData();
