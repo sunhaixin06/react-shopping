@@ -6,6 +6,7 @@ const srcRoot = path.resolve(__dirname,'src');
 const devPath = path.resolve(__dirname, 'dev');
 const pageDir = path.resolve(srcRoot, 'page');
 const HTMLWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const getHtmlArray=(entryMap)=>{
     let htmlArray = [];
@@ -17,7 +18,7 @@ const getHtmlArray=(entryMap)=>{
             htmlArray.push( new HTMLWebpackPlugin({
                 filename: key + '.html',
                 template: filename,
-                chunks: [key]
+                chunks: [ 'common', key]
             }));
         }
     })
@@ -88,8 +89,23 @@ module.exports = {
             }
         ]
     },
+    optimization: {
+        splitChunks:{
+            cacheGroups:{
+                common: {
+                    test: /[\\/]node_modules[\\/]/,
+                    chunks: 'all',
+                    name: 'common'
+                }
+            }
+        }
+    },
     plugins: [
         new webpack.NamedModulesPlugin(),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new MiniCssExtractPlugin({
+            filename: "[name].css",
+            chunkFilename: "[id].css"
+        })
     ].concat(htmlArray)
 };
