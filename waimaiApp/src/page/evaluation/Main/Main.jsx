@@ -1,6 +1,6 @@
 import 'component/common.scss'; import './Main.scss';
 import React, { Component } from 'react';
-import NavHeader from 'component/NavHeader/NavHeader.jsx';
+import NavHeader from 'component/NavHeader/NavHeader';
 
 class Main extends Component{
     constructor(props){
