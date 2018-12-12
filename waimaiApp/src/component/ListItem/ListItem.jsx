@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './ListItem.scss';
 import { connect } from 'react-redux';
 import StarScore from 'component/StarScore/StarScore';
+// import jsinvoke from 'component/jsapi';
 
 class ListItem extends Component {
     constructor(props) {
@@ -53,6 +54,14 @@ class ListItem extends Component {
 
     goDetail(data){
         window.location.href = './detail.html?id=' + data.id;
+        // jsinvoke({
+        //     cmd: 'openUrl',
+        //     data: {
+        //         url: encodeURIComponent('http://localhost:8080/detail.html?id=' + data.id)
+        //     }
+        // }, (val)=>{
+        //     console.log(val);
+        // });
     }
 
     render(){
