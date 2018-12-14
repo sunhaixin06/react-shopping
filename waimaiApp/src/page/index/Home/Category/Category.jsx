@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './Category.scss';
 import { getHeaderData } from '../../actions/categoryAction';
+import jsinvoke from 'component/jsapi';
 
 class Category extends Component {
     constructor(props) {
@@ -13,7 +14,17 @@ class Category extends Component {
         this.props.dispatch(getHeaderData())
     }
     goCategory(){
-        window.location.href = './category.html';
+        // window.location.href = './category.html';
+        //这个点击事件也要用 jsbridge包裹一下 
+        jsinvoke({
+            cmd: 'openUrl',
+            data: {
+                url: encodeURIComponent('http://localhost:8080/category.html')
+            }
+        }, (val)=>{
+            console.log(val);
+        });
+
     }
     renderItems(){
         let items = this.props.items;

@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import './NavHeader.scss';
-// import jsinvoke from 'component/jsapi';
+import jsinvoke from 'component/jsapi';
 
 class NavHeader extends Component{
     goBack(){
-        window.history.back();
-        // jsinvoke({
-        //     cmd: 'goBack',
-        //     data: {}
-        // });
+        // window.history.back();
+        jsinvoke({
+            cmd: 'goBack',
+            data: {}
+        });
     }
     render(){
         return (
